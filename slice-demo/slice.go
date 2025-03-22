@@ -36,3 +36,7 @@ func RunSliceProgram() {
 		fmt.Println("Sorted slice:", nums)
 	}
 }
+
+func main() {
+	RunSliceProgram()
+}
