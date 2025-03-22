@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func main() {
+func RunSliceProgram() {
 	// Initial slice with length 0 and capacity 3
 	nums := make([]int, 0, 3)
 
