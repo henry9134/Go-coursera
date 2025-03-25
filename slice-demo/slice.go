@@ -10,7 +10,8 @@ import (
 )
 
 func main() {
-	var nums []int
+	nums := make([]int, 0, 3)
+
 	reader := bufio.NewReader(os.Stdin)
 
 	for {
@@ -23,12 +24,14 @@ func main() {
 			break
 		}
 
-		if num, err := strconv.Atoi(input); err == nil {
-			nums = append(nums, num)
-			sort.Ints(nums)
-			fmt.Println("Sorted:", nums)
-		} else {
+		num, err := strconv.Atoi(input)
+		if err != nil {
 			fmt.Println("Invalid input.")
+			continue
 		}
+
+		nums = append(nums, num)
+		sort.Ints(nums)
+		fmt.Println("Sorted:", nums)
 	}
 }
