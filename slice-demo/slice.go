@@ -9,10 +9,8 @@ import (
 	"strings"
 )
 
-func RunSliceProgram() {
-	// Initial slice with length 0 and capacity 3
-	nums := make([]int, 0, 3)
-
+func main() {
+	var nums []int
 	reader := bufio.NewReader(os.Stdin)
 
 	for {
@@ -21,22 +19,16 @@ func RunSliceProgram() {
 		input = strings.TrimSpace(input)
 
 		if strings.EqualFold(input, "X") {
-			fmt.Println("Exiting program.")
+			fmt.Println("Exiting.")
 			break
 		}
 
-		num, err := strconv.Atoi(input)
-		if err != nil {
-			fmt.Println("Invalid input. Please enter an integer or 'X' to exit.")
-			continue
+		if num, err := strconv.Atoi(input); err == nil {
+			nums = append(nums, num)
+			sort.Ints(nums)
+			fmt.Println("Sorted:", nums)
+		} else {
+			fmt.Println("Invalid input.")
 		}
-
-		nums = append(nums, num)
-		sort.Ints(nums)
-		fmt.Println("Sorted slice:", nums)
 	}
-}
-
-func main() {
-	RunSliceProgram()
 }
